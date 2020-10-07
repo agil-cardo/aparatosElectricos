@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-2">
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+
+            <!-- angular toma el control del submit (boton) gracias a este (ngSubmit) y que se correlaciona con un metodo onSubmit -->
+
+            <!-- # es una reference local qui permets faire reference de DOM dépuis le DOM se puede nombrar de cualquier manera-->
+            <div class="form-group">
+                <label for="name">
+                    Nom de l'appareil
+                </label>
+                <input type="text" id="name" class="form-control" name="name" ngModel required>
+                <!-- required se parece a una directiva html pero estamos dentro de un objeto ngForm que es de angular -->
+
+            
+                <!-- ngModel directive qui va enregistrer ce control de formulaire apres d'Angular -->
+            </div>
+            <div class="form-group">
+                <label for="status">
+                    Etat de l'appareil
+                </label>
+                <select id="status" class="form-control" name="status" [ngModel]="defaultOnOff">
+
+                    <!-- con [] on se lie a la dir ngModel du select que se creo en edit-appareil.component.ts -->
+                    <option value="allumé">Allumé</option>
+                    <option value="étéint">Eteint</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Enregistrer</button>
+
+            <!-- esto nos permite tener un formulario validado -->
+
+        </form>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="col-sm-8 col-sm-offset-2">
+  <!-- <form [formGroup]="userForm" (ngSubmit)="onSubmitForm()"></form> otros 20 minutos y no habia visto que la valise se cerraba-->
+  <form [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
+
+
+    <div class="form-group">
+      <label for="firstName">Prenon</label>
+      <input type="text" class="form-control" id="firstName" formControlName="firstName">
+    </div>
+    <div class="form-group">
+      <label for="lastName">Non</label>
+      <input type="text" class="form-control" id="lastName" formControlName="lastName">
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" class="form-control" id="email" formControlName="email">
+    </div>
+    <div class="form-group">
+      <label for="drinkPreference">Qué te gusta?</label>
+      <select id="drinkPreference" class="form-control" formControlName="drinkPreference">
+        <option value="naranja">jugo de Naranja</option>
+        <option value="guayaba">jugo de Guayaba</option>
+      </select>
+    </div>
+
+
+    <div formArrayName="hobbies">
+      <h4>Tus pasatiempos, ya que no tienes nada mejor que hacer en la vida</h4>
+      <div class="form-group" *ngFor="let hobbyControl of getHobbies().controls; let i = index">
+        <input type="text" class="form-control" [formControlName]="i">
+      </div>
+      <button type="button" class="btn btn-success" (click)=onAddHobby()>agrega tu pastemps</button>
+
+
+    </div>
+
+    <!-- <button type="submit" class="btn btn-primary" [disable]="userForm.invalid">seleccionar</button> mas o menos 20 minutos pa darme cuenta que diabled estaba mal escrito -->
+    <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">seleccionar</button>
+
+  </form>
+</div>
